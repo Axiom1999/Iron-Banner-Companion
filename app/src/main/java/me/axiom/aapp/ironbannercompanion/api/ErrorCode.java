@@ -8,6 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 public class ErrorCode {
     public static final int SUCCESS = 1;
     public static final int USER_BANNED = 24;
+    public static final int USER_NOT_FOUND = 217;
     public static final int WAIT_MORE = 36;
     public static final int NEED_LOGIN = 99;
     public static final int ACCOUNT_NOT_FOUND = 1601;
@@ -22,6 +23,7 @@ public class ErrorCode {
 
     private static final String UNKNOWN_ERROR_NAME = "SOMETHING WENT WRONG";
     private static final String SUCCESS_ERROR_NAME = "SUCCESS";
+    private static final String USER_NOT_FOUND_NAME = "USER NOT FOUND";
     private static final String USER_BANNED_ERROR_NAME = "BANNED USER";
     private static final String WAIT_MORE_ERROR_NAME = "WAIT A LITTLE MORE";
     private static final String NEED_LOGIN_ERROR_NAME = "CREDENTIALS ARE OUTDATED";
@@ -34,7 +36,7 @@ public class ErrorCode {
     private static final String ITEM_UNIQUE_EQUIP_ERROR_NAME = "CAN ONLY HAVE ONE AT A TIME";
     private static final String ITEM_ACTION_FORBIDDEN_ERROR_NAME = "ACTION ON ITEM NOT POSSIBLE";
 
-    @IntDef({SUCCESS, USER_BANNED, WAIT_MORE, NEED_LOGIN, ACCOUNT_NOT_FOUND, GUARDIAN_NOT_FOUND, ITEM_ACTION_FORBIDDEN, ITEM_FAILED_LEVEL_CHECK, ITEM_FAILED_UNLOCK_CHECK, ITEM_NOT_FOUND, ITEM_UNEQUIPPABLE, ITEM_UNIQUE_EQUIP_RESTRICTED})
+    @IntDef({SUCCESS, USER_NOT_FOUND, USER_BANNED, WAIT_MORE, NEED_LOGIN, ACCOUNT_NOT_FOUND, GUARDIAN_NOT_FOUND, ITEM_ACTION_FORBIDDEN, ITEM_FAILED_LEVEL_CHECK, ITEM_FAILED_UNLOCK_CHECK, ITEM_NOT_FOUND, ITEM_UNEQUIPPABLE, ITEM_UNIQUE_EQUIP_RESTRICTED})
     @Retention(RetentionPolicy.SOURCE)
     public @interface VALUES {
     }
@@ -45,6 +47,9 @@ public class ErrorCode {
         switch (damageType) {
             case SUCCESS:
                 name = SUCCESS_ERROR_NAME;
+                break;
+            case USER_NOT_FOUND:
+                name = USER_NOT_FOUND_NAME;
                 break;
             case USER_BANNED:
                 name = USER_BANNED_ERROR_NAME;

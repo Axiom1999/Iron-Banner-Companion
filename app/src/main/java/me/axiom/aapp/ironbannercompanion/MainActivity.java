@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.security.Key;
+
 import me.axiom.aapp.ironbannercompanion.api.DestinyAPI;
 import me.axiom.aapp.ironbannercompanion.api.User;
 import me.axiom.aapp.ironbannercompanion.api.responses.AccountSummaryResponse;
@@ -16,7 +18,7 @@ import retrofit.Retrofit;
 public class MainActivity extends AppCompatActivity {
 
     DestinyAPI destinyAPI;
-    User user;
+    User user = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,27 +28,21 @@ public class MainActivity extends AppCompatActivity {
         DestinyAPI.initServer(this, "167b5904935a43cc9b188475002e7b1f");
         destinyAPI = DestinyAPI.getInstance();
 
-        createUser("Axiom1999", 1);
-        getMembershipId();
+        user.setGamerTag("Axiom1999");
+        user.setPlatformId(1);
 
         TextView textView_Username = (TextView)findViewById(R.id.textView_Username);
-        textView_Username.setText(user.getMembershipId());
+        textView_Username.setText(getMembershipId());
     }
 
-    public void createUser(String username, Integer platformId) {
-        user = new User();
-
-        user.setGamerTag(username);
-        user.setPlatformId(platformId);
-    }
-
-    public void getMembershipId() {
+    public String getMembershipId() {
 
         destinyAPI.getMembershipId(user, new Callback<MembershipIdResponse>() {
             @Override
             public void onResponse(Response<MembershipIdResponse> response, Retrofit retrofit) {
                 Log.d("API_CALL", "Response!");
-                user.setMembershipId(response.body().getResponse().toString());
+                Log.d("API_CALL", response.body().getResponse());
+                user.setMembershipId(response.body().getResponse());
             }
 
             @Override
@@ -54,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("API_CALL", "Failure.");
                 t.printStackTrace();
             }
+
         });
+        return user.getMembershipId();
     }
 }

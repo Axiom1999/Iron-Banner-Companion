@@ -2,17 +2,15 @@ package me.axiom.aapp.ironbannercompanion.api.responses;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Map;
-
 import me.axiom.aapp.ironbannercompanion.api.BaseResponse;
 
-public class MembershipIdResponse extends BaseResponse<Map<String, Integer>> {
+public class MembershipIdResponse extends BaseResponse<String> {
 
     @SerializedName("Response")
-    private Map<String, Integer> mResponse;
+    private String mResponse;
 
     @Override
-    public Map<String, Integer> getResponse() {
+    public String getResponse() {
         return mResponse;
     }
 

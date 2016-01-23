@@ -1,6 +1,7 @@
 package me.axiom.aapp.ironbannercompanion.api;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
@@ -79,8 +80,11 @@ public class DestinyAPI {
                                 String bodyString = response.body().string();
                                 me.axiom.aapp.ironbannercompanion.api.responses.Response result = GSON.fromJson(bodyString, me.axiom.aapp.ironbannercompanion.api.responses.Response.class);
 
-                                if (result.getErrorCode() == ErrorCode.NEED_LOGIN) {
-                                    Toast.makeText(mContext, "ERROR: Action requires Login.", Toast.LENGTH_LONG).show();
+                                if (result.getErrorCode() == ErrorCode.USER_NOT_FOUND) {
+                                    Intent noUser = new Intent();
+                                    noUser.putExtra("Username", user.getGamerTag());
+                                    noUser.putExtra("PlatformId", user.getPlatformId());
+                                    mContext.sendBroadcast(noUser);
                                 } else if (result.getErrorCode() == ErrorCode.WAIT_MORE) {
                                     try {
                                         int throttleSeconds = result.getThrottleSeconds();
