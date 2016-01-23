@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="psn_title">Playstation Network</string>
+    <string name="live_title">XBOX Live</string>
+
+    <string name="log_in_url">http://www.bungie.net/en/User/SignIn/%1$s</string>
+
+</resources>
