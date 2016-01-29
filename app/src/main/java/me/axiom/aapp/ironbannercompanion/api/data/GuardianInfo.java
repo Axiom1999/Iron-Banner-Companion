@@ -13,6 +13,9 @@ public class GuardianInfo {
     @SerializedName("characterBase")
     private CharacterBase characterBase;
 
+    @SerializedName("characterLevel")
+    private int characterLevel;
+
     public String getEmblemPath() {
         return emblemPath;
     }
@@ -23,6 +26,10 @@ public class GuardianInfo {
 
     public CharacterBase getCharacterBase() {
         return characterBase;
+    }
+
+    public int getCharacterLevel() {
+        return characterLevel;
     }
 
 }

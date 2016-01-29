@@ -1,57 +1,174 @@
 package me.axiom.aapp.ironbannercompanion;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.TextView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.Window;
+import android.widget.Toast;
 
-import java.security.Key;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 
-import me.axiom.aapp.ironbannercompanion.api.DestinyAPI;
+import java.util.ArrayList;
+import java.util.List;
+
 import me.axiom.aapp.ironbannercompanion.api.User;
-import me.axiom.aapp.ironbannercompanion.api.responses.AccountSummaryResponse;
-import me.axiom.aapp.ironbannercompanion.api.responses.MembershipIdResponse;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import me.axiom.aapp.ironbannercompanion.fragments.BountyFragment;
+import me.axiom.aapp.ironbannercompanion.fragments.MainFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    DestinyAPI destinyAPI;
-    User user = new User();
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+
+    private FloatingActionMenu fab;
+    private FloatingActionButton fab_User, fab_Char;
+
+    private User user;
+    public String username, membershipId, characterId;
+    public int platformId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DestinyAPI.initServer(this, "167b5904935a43cc9b188475002e7b1f");
-        destinyAPI = DestinyAPI.getInstance();
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        setupViewPager(viewPager);
 
-        user.setGamerTag("Axiom1999");
-        user.setPlatformId(1);
+        tabLayout = (TabLayout) findViewById(R.id.tabMenu);
+        tabLayout.setupWithViewPager(viewPager);
 
-        TextView textView_Username = (TextView)findViewById(R.id.textView_Username);
-        textView_Username.setText(getMembershipId());
+        fab = (FloatingActionMenu) findViewById(R.id.fab);
+        fab_User = (FloatingActionButton) findViewById(R.id.fab_user);
+        fab_Char = (FloatingActionButton) findViewById(R.id.fab_char);
+
+        fab.setOnMenuToggleListener(fabMenuToggleListener);
+        fab_User.setOnClickListener(fabClickListener);
+        fab_Char.setOnClickListener(fabClickListener);
+
+        if (validateIntentExtras()) {
+
+            username = getIntent().getExtras().getString("username");
+            membershipId = getIntent().getExtras().getString("membershipId");
+            characterId = getIntent().getExtras().getString("characterId");
+            platformId = getIntent().getExtras().getInt("platformId");
+
+        } else {
+
+            Toast.makeText(MainActivity.this, "UNABLE TO LOAD CHARACTER!", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, LoginPlatformActivity.class);
+            startActivity(intent);
+            finish();
+
+        }
+
     }
 
-    public String getMembershipId() {
+    public boolean validateIntentExtras() {
 
-        destinyAPI.getMembershipId(user, new Callback<MembershipIdResponse>() {
-            @Override
-            public void onResponse(Response<MembershipIdResponse> response, Retrofit retrofit) {
-                Log.d("API_CALL", "Response!");
-                Log.d("API_CALL", response.body().getResponse());
-                user.setMembershipId(response.body().getResponse());
-            }
+        String u = getIntent().getExtras().getString("username");
+        String m = getIntent().getExtras().getString("membershipId");
+        String c = getIntent().getExtras().getString("characterId");
+        int p = getIntent().getExtras().getInt("platformId");
 
-            @Override
-            public void onFailure(Throwable t) {
-                Log.d("API_CALL", "Failure.");
-                t.printStackTrace();
-            }
+        if (u == null || m == null || c == null || p == 0) {
 
-        });
-        return user.getMembershipId();
+            return false;
+
+        } else {
+
+            return true;
+
+        }
+
     }
+
+    private void setupViewPager(ViewPager viewPager) {
+
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new MainFragment(), "HOME");
+        adapter.addFragment(new BountyFragment(), "BOUNTIES");
+        viewPager.setAdapter(adapter);
+
+    }
+
+    private FloatingActionMenu.OnMenuToggleListener fabMenuToggleListener = new FloatingActionMenu.OnMenuToggleListener() {
+        @Override
+        public void onMenuToggle(boolean opened) {
+
+            if (opened) {
+
+                fab.getMenuIconView().setImageResource(R.drawable.ic_add);
+
+            } else {
+
+                fab.getMenuIconView().setImageResource(R.drawable.ic_edit);
+
+            }
+
+        }
+    };
+
+    private View.OnClickListener fabClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            switch (v.getId()) {
+
+                case R.id.fab_user:
+                    Intent intentUser = new Intent(getBaseContext(), LoginPlatformActivity.class);
+                    startActivity(intentUser);
+                    finish();
+                    break;
+
+                case R.id.fab_char:
+                    Intent intentChar = new Intent(getBaseContext(), CharacterSelection.class);
+                    startActivity(intentChar);
+                    finish();
+                    break;
+
+            }
+
+        }
+    };
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+
+    }
+
 }

@@ -6,6 +6,7 @@
     <color name="colorPrimaryDark">#2E7D32</color>
     <color name="colorPrimaryLight">#A5D6A7</color>
     <color name="colorAccent">#FFC107</color>
+    <color name="colorAccented">#ffde7c</color>
     <color name="colorTextPrimary">#fafafa</color>
     <color name="colorTextSecondary">#e1e1e1</color>
     <color name="colorDivider">#B6B6B6</color>

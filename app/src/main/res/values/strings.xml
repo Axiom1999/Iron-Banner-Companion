@@ -1,5 +1,43 @@
 <resources>
     <string name="app_name">Iron Banner Companion</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_character">CharacterActivity</string>
+
+    <string-array name="day_values">
+        <item>(1) Tuesday</item>
+        <item>(2) Wednesday</item>
+        <item>(3) Thursday</item>
+        <item>(4) Friday</item>
+        <item>(5) Saturday</item>
+        <item>(6) Sunday</item>
+        <item>(7) Monday</item>
+    </string-array>
+
+    <string-array name="rank_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="weekly_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="daily_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+
 </resources>

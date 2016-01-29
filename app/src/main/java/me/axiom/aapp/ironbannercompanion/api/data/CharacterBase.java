@@ -13,6 +13,9 @@ public class CharacterBase {
     @GuardianClass.VALUES
     private int classType;
 
+    @SerializedName("powerLevel")
+    private int powerLevel;
+
     public String getCharacterId() {
         return characterId;
     }
@@ -20,6 +23,10 @@ public class CharacterBase {
     @GuardianClass.VALUES
     public int getClassType() {
         return classType;
+    }
+
+    public int getLightLevel() {
+        return powerLevel;
     }
 
 }

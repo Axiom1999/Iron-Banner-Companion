@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import me.axiom.aapp.ironbannercompanion.api.responses.AccountSummaryResponse;
+import me.axiom.aapp.ironbannercompanion.api.responses.CharacterProgressionResponse;
 import me.axiom.aapp.ironbannercompanion.api.responses.MembershipIdResponse;
 import retrofit.Callback;
 import retrofit.GsonConverterFactory;
@@ -80,12 +81,7 @@ public class DestinyAPI {
                                 String bodyString = response.body().string();
                                 me.axiom.aapp.ironbannercompanion.api.responses.Response result = GSON.fromJson(bodyString, me.axiom.aapp.ironbannercompanion.api.responses.Response.class);
 
-                                if (result.getErrorCode() == ErrorCode.USER_NOT_FOUND) {
-                                    Intent noUser = new Intent();
-                                    noUser.putExtra("Username", user.getGamerTag());
-                                    noUser.putExtra("PlatformId", user.getPlatformId());
-                                    mContext.sendBroadcast(noUser);
-                                } else if (result.getErrorCode() == ErrorCode.WAIT_MORE) {
+                                if (result.getErrorCode() == ErrorCode.WAIT_MORE) {
                                     try {
                                         int throttleSeconds = result.getThrottleSeconds();
                                         wait(TimeUnit.SECONDS.toMillis(throttleSeconds));
@@ -137,6 +133,11 @@ public class DestinyAPI {
     public void getMembershipId(User user, Callback<MembershipIdResponse> callback) {
         Endpoints userRest = getRestAdapter(user).create(Endpoints.class);
         userRest.getMembershipId(user.getPlatformId(), user.getGamerTag()).enqueue(callback);
+    }
+
+    public void getCharacterProgression(User user, String characterId, Callback<CharacterProgressionResponse> callback) {
+        Endpoints userRest = getRestAdapter(user).create(Endpoints.class);
+        userRest.getCharacterProgression(user.getPlatformId(), user.getMembershipId(), characterId).enqueue(callback);
     }
 
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:CircleProgressView="http://schemas.android.com/apk/res-auto">
+
+    <at.grabner.circleprogress.CircleProgressView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:id="@+id/progressView_Rep"
+        android:layout_alignParentTop="false"
+        CircleProgressView:cpv_barColor="@color/colorPrimaryLight"
+        CircleProgressView:cpv_rimColor="@color/colorPrimary"
+        CircleProgressView:cpv_textColor="@color/colorTextPrimary"
+        CircleProgressView:cpv_unitColor="@color/colorTextSecondary"
+        CircleProgressView:cpv_spinColor="@color/colorAccent"
+        CircleProgressView:cpv_barWidth="35dp"
+        CircleProgressView:cpv_rimWidth="40dp"
+        CircleProgressView:cpv_contourSize="0dp"
+        CircleProgressView:cpv_value="0"
+        CircleProgressView:cpv_maxValue="100"
+        CircleProgressView:cpv_seekMode="false"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Rank 0"
+        android:id="@+id/textView_Level"
+        android:layout_below="@+id/progressView_Rep"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textSize="36dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="MAX"
+        android:id="@+id/textView_Max"
+        android:layout_alignTop="@+id/progressView_Rep"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:layout_alignLeft="@+id/progressView_Rep"
+        android:layout_alignRight="@+id/progressView_Rep"
+        android:layout_alignBottom="@+id/progressView_Rep"
+        android:gravity="center"
+        android:textSize="35dp"
+        android:visibility="invisible" />
+
+</RelativeLayout>

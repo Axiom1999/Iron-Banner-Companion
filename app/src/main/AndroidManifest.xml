@@ -20,8 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginPlatformActivity" />
+        <activity
+            android:name=".LoginUsernameActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".LoginCharacterActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".CharacterSelection" />
     </application>
 
 </manifest>

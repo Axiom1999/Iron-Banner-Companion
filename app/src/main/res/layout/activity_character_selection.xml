@@ -6,14 +6,6 @@
     tools:context="me.axiom.aapp.ironbannercompanion.CharacterActivity">
 
     <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView_Tint_Character"
-        android:background="@color/colorPrimaryDark"
-        android:layout_alignParentBottom="true"
-        android:layout_alignTop="@+id/button_Back_Character" />
-
-    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView_Logo"
@@ -66,26 +58,30 @@
         android:stackFromBottom="false"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_above="@+id/imageView_Tint_Character"
         android:layout_marginBottom="16dp"
         android:textFilterEnabled="false"
         android:layout_centerInParent="true"
         android:layout_alignParentLeft="false"
         android:layout_alignParentRight="false"
         android:dividerHeight="5dp"
-        android:divider="@android:color/transparent"/>
+        android:divider="@android:color/transparent"
+        android:layout_alignParentBottom="false"
+        android:layout_above="@+id/button_Change_User" />
 
     <Button
-        android:id="@+id/button_Back_Character"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:drawableLeft="@drawable/ic_arrow_left"
-        android:background="@android:color/transparent"
-        android:text="BACK"
-        android:textSize="18dp"
+        android:text="CHANGE USER"
+        android:id="@+id/button_Change_User"
+        android:background="@drawable/flat_button"
+        android:layout_gravity="left|bottom"
+        android:layout_marginRight="1dp"
+        android:backgroundTint="@color/colorWhite"
+        android:textColor="@color/colorWindowBackground"
+        android:textStyle="bold"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentRight="true" />
 
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="50dp"

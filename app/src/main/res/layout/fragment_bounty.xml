@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:CircleProgressView="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout_Bounties"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Rank Wanted"
+        android:id="@+id/textView_Choose_Rank"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:textSize="23dp" />
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Reputation Needed"
+        android:id="@+id/textView_RepNeeded_Text"
+        android:textStyle="italic"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_alignTop="@+id/textView_Choose_Rank"
+        android:layout_marginTop="-5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@+id/spinner_Rank" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/textView_RepNeeded"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="@color/colorTextSecondary"
+        android:layout_below="@+id/textView_RepNeeded_Text"
+        android:layout_alignLeft="@+id/textView_RepNeeded_Text"
+        android:layout_alignRight="@+id/textView_RepNeeded_Text" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView_DividerOne"
+        android:src="@drawable/divider_line"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentTop="false"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/textView_RepNeeded"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Modifiers"
+        android:id="@+id/textView_Modifiers_Text"
+        android:layout_below="@+id/imageView_DividerOne"
+        android:layout_alignLeft="@+id/textView_Choose_Rank"
+        android:layout_alignStart="@+id/textView_Choose_Rank"
+        android:layout_marginTop="5dp"
+        android:textSize="22dp"
+        android:textColor="@color/colorTextPrimary"
+        android:textStyle="bold" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Emblem"
+        android:id="@+id/checkBox_Emblem"
+        android:checked="false"
+        android:textColor="@color/colorTextSecondary"
+        android:layout_below="@+id/textView_Modifiers_Text"
+        android:layout_alignLeft="@+id/imageView_DividerOne"
+        android:layout_alignStart="@+id/imageView_DividerOne"
+        android:layout_marginLeft="25dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shader"
+        android:id="@+id/checkBox_Shader"
+        android:checked="false"
+        android:textColor="@color/colorTextSecondary"
+        android:layout_alignBottom="@+id/checkBox_Emblem"
+        android:layout_toRightOf="@+id/checkBox_Emblem"
+        android:layout_toEndOf="@+id/checkBox_Emblem"
+        android:layout_marginLeft="5dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Class Item"
+        android:id="@+id/checkBox_ClassItem"
+        android:checked="false"
+        android:textColor="@color/colorTextSecondary"
+        android:layout_alignBottom="@+id/checkBox_Shader"
+        android:layout_toRightOf="@+id/checkBox_Shader"
+        android:layout_toEndOf="@+id/checkBox_Shader"
+        android:layout_marginLeft="5dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alternate Character"
+        android:id="@+id/checkBox_AltChar"
+        android:checked="false"
+        android:textColor="@color/colorTextSecondary"
+        android:layout_below="@+id/checkBox_Shader"
+        android:layout_alignLeft="@+id/checkBox_Emblem"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Tempering Buff:"
+        android:id="@+id/textView_TemperingBuff_Text"
+        android:textColor="@color/colorTextPrimary"
+        android:gravity="center"
+        android:layout_below="@+id/checkBox_AltChar"
+        android:layout_alignLeft="@+id/checkBox_AltChar"
+        android:layout_alignStart="@+id/imageView_DividerTwo"
+        android:textSize="16dp"
+        android:textStyle="italic"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0%"
+        android:id="@+id/textView_TemperingBuff_Value"
+        android:textColor="@color/colorTextSecondary"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:layout_alignTop="@+id/textView_TemperingBuff_Text"
+        android:layout_toRightOf="@+id/textView_TemperingBuff_Text"
+        android:layout_toEndOf="@+id/textView_TemperingBuff_Text"
+        android:layout_alignBottom="@+id/textView_TemperingBuff_Text"
+        android:layout_marginLeft="5dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView_DividerTwo"
+        android:src="@drawable/divider_line"
+        android:layout_below="@+id/textView_TemperingBuff_Text"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Bounties"
+        android:id="@+id/textView_Bounties_Text"
+        android:layout_marginTop="5dp"
+        android:textSize="22dp"
+        android:textColor="@color/colorTextPrimary"
+        android:textStyle="bold"
+        android:layout_below="@+id/imageView_DividerTwo"
+        android:layout_alignLeft="@+id/textView_Modifiers_Text"
+        android:layout_alignStart="@id/textView_Choose_Rank" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Weekly Bounties"
+        android:id="@+id/textView_Weekly_Bounties_Text"
+        android:layout_below="@+id/textView_Bounties_Text"
+        android:textColor="@color/colorTextPrimary"
+        android:layout_marginTop="5dp"
+        android:gravity="center|right"
+        android:layout_alignLeft="@+id/textView_TemperingBuff_Text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="525 reputation each..."
+        android:id="@+id/textView_Weekly_Bounties_Description"
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorTextSecondary"
+        android:layout_below="@+id/textView_Weekly_Bounties_Text"
+        android:layout_alignLeft="@+id/textView_Weekly_Bounties_Text"
+        android:layout_alignStart="@+id/textView_Weekly_Bounties_Text"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Daily Bounties"
+        android:id="@+id/textView_Daily_Bounties_Text"
+        android:textColor="@color/colorTextPrimary"
+        android:gravity="center|right"
+        android:layout_below="@+id/textView_Weekly_Bounties_Description"
+        android:layout_alignLeft="@+id/textView_Weekly_Bounties_Description"
+        android:layout_alignStart="@+id/textView_Weekly_Bounties_Description"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="125 reputation each..."
+        android:id="@+id/textView_Daily_Bounties_Description"
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorTextSecondary"
+        android:textStyle="italic"
+        android:layout_below="@+id/textView_Daily_Bounties_Text"
+        android:layout_alignLeft="@+id/textView_Weekly_Bounties_Description" />
+
+        <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView_DividerThree"
+        android:src="@drawable/divider_line"
+        android:layout_below="@+id/textView_Daily_Bounties_Description"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Reputation Earnt:"
+        android:id="@+id/textView_Reputation_Earn_Text"
+        android:textColor="@color/colorTextPrimary"
+        android:gravity="center|right"
+        android:layout_marginTop="5dp"
+        android:textSize="22dp"
+        android:layout_below="@+id/imageView_DividerThree"
+        android:layout_alignLeft="@+id/textView_Bounties_Text"
+        android:layout_alignStart="@+id/textView_Bounties_Text"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="0"
+        android:id="@+id/textView_RepEarnt_Value"
+        android:textColor="@color/colorTextSecondary"
+        android:gravity="center"
+        android:layout_alignTop="@+id/textView_Reputation_Earn_Text"
+        android:layout_marginLeft="15dp"
+        android:layout_alignBottom="@+id/textView_Reputation_Earn_Text"
+        android:layout_toRightOf="@+id/textView_Reputation_Earn_Text"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Per Game:"
+        android:id="@+id/textView_Per_Game_Text"
+        android:textColor="@color/colorTextPrimary"
+        android:gravity="center|right"
+        android:textSize="20dp"
+        android:layout_below="@+id/textView_Reputation_Earn_Text"
+        android:layout_alignLeft="@+id/textView_Reputation_Earn_Text"
+        android:layout_alignStart="@+id/textView_Reputation_Earn_Text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="0"
+        android:id="@+id/textView_Per_Game_Value"
+        android:textColor="@color/colorTextSecondary"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:layout_alignBottom="@+id/textView_Per_Game_Text"
+        android:layout_alignTop="@+id/textView_Per_Game_Text"
+        android:layout_alignLeft="@+id/textView_RepEarnt_Value" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Per Medallion:"
+        android:id="@+id/textView_Per_Medallion_Text"
+        android:textColor="@color/colorTextPrimary"
+        android:gravity="center|right"
+        android:textSize="20dp"
+        android:layout_below="@+id/textView_Per_Game_Text"
+        android:layout_alignLeft="@+id/textView_Per_Game_Text"
+        android:layout_alignStart="@+id/textView_Per_Game_Text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="0"
+        android:id="@+id/textView_Per_Medallion_Value"
+        android:textColor="@color/colorTextSecondary"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/textView_Per_Medallion_Text"
+        android:layout_alignBottom="@+id/textView_Per_Medallion_Text"
+        android:layout_alignLeft="@+id/textView_RepEarnt_Value" />
+
+        <Spinner
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner_Rank"
+            android:layout_alignBottom="@+id/textView_Choose_Rank"
+            android:layout_toRightOf="@+id/textView_Choose_Rank"
+            android:layout_alignTop="@+id/textView_Choose_Rank"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:spinnerMode="dropdown"
+            android:entries="@array/rank_values"
+            android:fadeScrollbars="false" />
+
+        <Spinner
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner_Weekly"
+            android:gravity="center"
+            android:spinnerMode="dropdown"
+            android:entries="@array/weekly_values"
+            android:layout_alignTop="@+id/textView_Weekly_Bounties_Text"
+            android:layout_toRightOf="@+id/textView_Weekly_Bounties_Text"
+            android:layout_toEndOf="@+id/textView_Weekly_Bounties_Text"
+            android:layout_alignBottom="@+id/textView_Weekly_Bounties_Description"
+            android:layout_marginLeft="10dp"
+            android:fadeScrollbars="false" />
+
+        <Spinner
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner_Daily"
+            android:gravity="center"
+            android:spinnerMode="dropdown"
+            android:entries="@array/daily_values"
+            android:layout_alignTop="@+id/textView_Daily_Bounties_Text"
+            android:layout_alignLeft="@+id/spinner_Weekly"
+            android:layout_alignStart="@+id/spinner_Weekly"
+            android:layout_alignBottom="@+id/textView_Daily_Bounties_Description"
+            android:fadeScrollbars="false" />
+
+        <com.liulishuo.magicprogresswidget.MagicProgressBar
+            android:layout_width="fill_parent"
+            android:layout_height="25dp"
+            android:id="@+id/progressBar_NewRank"
+            app:mpb_background_color="@color/colorPrimaryDark"
+            app:mpb_flat="true"
+            app:mpb_percent="0.0"
+            app:mpb_fill_color="@color/colorAccent"
+            android:layout_below="@+id/textView_Per_Medallion_Text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_toRightOf="@+id/textView_New_Rank_Text"
+            android:layout_marginTop="2dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="New Rank:"
+            android:id="@+id/textView_New_Rank_Text"
+            android:textColor="@color/colorTextPrimary"
+            android:gravity="center|right"
+            android:textSize="20dp"
+            android:layout_below="@+id/textView_Per_Medallion_Text"
+            android:layout_alignLeft="@+id/textView_Per_Medallion_Text"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="RANK 0 (0/0)"
+            android:id="@+id/textView_NewRank_Rank"
+            android:layout_alignTop="@+id/progressBar_NewRank"
+            android:layout_alignLeft="@+id/progressBar_NewRank"
+            android:layout_alignBottom="@+id/progressBar_NewRank"
+            android:textStyle="bold"
+            android:textColor="@color/colorTextPrimary"
+            android:gravity="center"
+            android:layout_alignRight="@+id/progressBar_NewRank" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner_TemperingDay"
+            android:gravity="center"
+            android:spinnerMode="dropdown"
+            android:entries="@array/day_values"
+            android:fadeScrollbars="false"
+            android:layout_toRightOf="@+id/textView_TemperingBuff_Value"
+            android:layout_toEndOf="@+id/textView_TemperingBuff_Value"
+            android:layout_alignBottom="@+id/textView_TemperingBuff_Value"
+            android:layout_below="@+id/checkBox_AltChar"
+            android:layout_marginLeft="5dp" />
+
+    </RelativeLayout>
+
+</ScrollView>

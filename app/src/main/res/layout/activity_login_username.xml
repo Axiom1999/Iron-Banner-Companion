@@ -10,8 +10,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/imageView_Next_Username"
-        android:background="@color/colorPrimaryDark" />
+        android:background="@color/colorPrimaryDark"
+        android:layout_alignTop="@+id/button_Next_Username" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -19,10 +19,10 @@
         android:id="@+id/imageView_Logo"
         android:src="@drawable/logo"
         android:tint="@color/colorWhite"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/imageView_Divider"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentTop="false"
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/imageView_Divider" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,100 +57,37 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/editText_Username"
-        android:layout_below="@+id/textView_ChooseUsername"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
         android:layout_alignLeft="@+id/imageView_Divider"
         android:layout_alignRight="@+id/imageView_Divider"
         android:textSize="24dp"
         android:hint="Username"
         android:textColorHint="@color/colorTextSecondary"
         android:gravity="center_horizontal"
-        android:background="@drawable/edit_text_selector" />
+        android:background="@drawable/edit_text_normal"
+        android:layout_below="@+id/textView_ChooseUsername"
+        android:layout_marginTop="50dp" />
 
-    <pl.droidsonroids.gif.GifImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignTop="@+id/editText_Username"
-        android:layout_alignBottom="@+id/editText_Username"
-        android:layout_alignRight="@+id/editText_Username"
-        android:src="@drawable/loader"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:id="@+id/gifImageView_Loader_Username"
-        android:visibility="invisible" />
-
-    <ImageView
-        android:layout_width="50dp"
+    <Button
+        android:id="@+id/button_Back_Username"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:id="@+id/imageView_Go_Back"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:src="@drawable/ic_arrow_left"
-        android:adjustViewBounds="true"
-        android:layout_marginLeft="1dp"
-        android:layout_marginBottom="1dp" />
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/imageView_Next_Username"
-        android:src="@drawable/ic_arrow_right"
-        android:adjustViewBounds="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="1dp"
-        android:layout_marginBottom="1dp"
-        android:layout_alignParentRight="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="NEXT"
-        android:id="@+id/textView_Next_Username"
-        android:layout_alignTop="@+id/imageView_Next_Username"
-        android:layout_toLeftOf="@+id/imageView_Next_Username"
-        android:layout_alignBottom="@+id/imageView_Next_Username"
-        android:textSize="20dp"
-        android:layout_marginRight="1dp"
-        android:gravity="center" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:drawableLeft="@drawable/ic_arrow_left"
+        android:background="@android:color/transparent"
         android:text="BACK"
-        android:id="@+id/textView_Back_Username"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:layout_alignTop="@+id/imageView_Go_Back"
-        android:layout_alignBottom="@+id/imageView_Go_Back"
-        android:layout_toRightOf="@+id/imageView_Go_Back" />
+        android:textSize="18dp" />
 
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/imageView_Tick_Username"
-        android:layout_alignBottom="@+id/editText_Username"
-        android:layout_alignRight="@+id/editText_Username"
-        android:src="@drawable/ic_tick"
-        android:layout_alignTop="@+id/editText_Username"
-        android:layout_marginRight="5dp"
-        android:visibility="invisible" />
-
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/imageView_Cross_Username"
-        android:src="@drawable/ic_cross"
-        android:visibility="invisible"
-        android:layout_alignBottom="@+id/editText_Username"
-        android:layout_alignRight="@+id/editText_Username"
-        android:layout_marginRight="5dp"
-        android:layout_alignTop="@+id/editText_Username"
-        android:tint="#ff8a80" />
+    <Button
+        android:id="@+id/button_Next_Username"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:drawableRight="@drawable/ic_arrow_right"
+        android:background="@android:color/transparent"
+        android:text="NEXT"
+        android:textSize="18dp" />
 
 </RelativeLayout>

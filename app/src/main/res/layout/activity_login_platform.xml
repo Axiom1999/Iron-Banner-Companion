@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="me.axiom.aapp.ironbannercompanion.LoginActivity"
+    tools:context=".LoginPlatformActivity"
     android:background="@color/colorWindowBackground">
 
     <ImageView
@@ -60,7 +60,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="XBOX LIVE"
-                android:id="@+id/button_XBL"
+                android:id="@+id/button_Change_User"
                 android:background="@drawable/flat_button"
                 android:layout_gravity="left|bottom"
                 android:layout_marginRight="1dp"
